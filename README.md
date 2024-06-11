@@ -13,10 +13,10 @@
     - [Área de clientes](#área-de-clientes)
     - [Área de entrenador](#área-de-entrenador)
     - [Área de gestor](#área-de-gestor)
-    - [Funcionalidades opcionales](#funcionalidades-opcionales)
   - [Estructura del proyecto](#estructura-del-proyecto)
   - [Control de versiones](#control-de-versiones)
     - [Ramas](#ramas)
+
 ## Integrantes del equipo:
 - Cristina de los Ángeles Bosa Sánchez
 - Elena Sánchez Jiménez
@@ -40,3 +40,5 @@ Los usuarios de tipo entrenador podrán visualizar su información personal y qu
 
 ### Área de gestor
 Los usuarios de tipo gestor tendrán acceso al panel de administrador donde podrá gestionar el centro.
+
+## Estructura del proyecto
