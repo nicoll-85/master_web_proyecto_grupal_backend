@@ -47,6 +47,7 @@ authentication/
 
 gym/
 |-- migrations/
+|-- management/commands/
 |-- models/
 |-- serializers/
 |-- views/
@@ -85,6 +86,8 @@ Módulo de `gym`: La capa de negocio de todos los usuarios independientemente de
 ```
 gym/
 |-- migrations/ -> Migraciones de la base de datos
+|-- management/commands -> Comandos para la gestión de la aplicación 
+|       |-- seeder_auth.py -> Clases necesarias para la lógica de negocio
 |-- models/ -> Modelos necesarios para la lógica de negocio 
 |       |-- classes.py -> Clases necesarias para la lógica de negocio
 |       |-- classDifficult.py -> Dificultad de las clases 
@@ -102,6 +105,7 @@ gym/
 Módulo de `master_web_proyecto_grupal_backend` es la configuración del servidor del que depende el resto de módulos mencionados anteriormente.  
 ```
 master_web_proyecto_grupal_backend/
+|paginations.py -> Paginaciones del proyecto
 |settings.py -> Configuración del proyecto (PJ: configuración de base de datos, middleware...) 
 |urls.py -> Rutas de la aplicación (endpoints)
 ```
