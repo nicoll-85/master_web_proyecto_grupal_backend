@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -42,7 +41,7 @@ INSTALLED_APPS = [
     "gym",
     "administrator",
     "authentication",
-]
+    ]
 
 MIDDLEWARE = [
     "authentication.middleware.csrf.DisableCSRFMiddleware",
@@ -53,7 +52,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-]
+    ]
 
 ROOT_URLCONF = "master_web_proyecto_grupal_backend.urls"
 
@@ -68,12 +67,11 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-            ],
+                ],
+            },
         },
-    },
-]
+    ]
 WSGI_APPLICATION = "master_web_proyecto_grupal_backend.wsgi.application"
-
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
@@ -81,9 +79,8 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
+        }
     }
-}
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -91,18 +88,17 @@ DATABASES = {
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
-    },
+        },
     {
         "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
-    },
+        },
     {
         "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
-    },
+        },
     {
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
-    },
-]
-
+        },
+    ]
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
@@ -110,7 +106,6 @@ LANGUAGE_CODE = "en-us"
 TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
@@ -123,17 +118,17 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
-    ),
+        ),
     # "DEFAULT_PERMISSION_CLASSES": (
     #     "rest_framework.permissions.IsAuthenticated",
     #     "rest_framework.permissions.DjangoModelPermissions",
     # ),
-    #"DEFAULT_PAGINATION_CLASS": "master_web_proyecto_grupal_backend.paginations.StandardResultsSetPagination",
+    # "DEFAULT_PAGINATION_CLASS": "master_web_proyecto_grupal_backend.paginations.StandardResultsSetPagination",
     "DEFAULT_RENDERER_CLASSES": (
         "rest_framework.renderers.JSONRenderer",
         "rest_framework.renderers.BrowsableAPIRenderer",
-    ),
-}
+        ),
+    }
 
 # Authentication
 AUTH_USER_MODEL = (
