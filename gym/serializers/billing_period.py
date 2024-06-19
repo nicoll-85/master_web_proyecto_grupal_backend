@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from gym.models.class_billingPeriod import BillingPeriod
+from gym.models.billing_period import BillingPeriod
 
 
 class BillingPeriodSerializer(serializers.ModelSerializer):

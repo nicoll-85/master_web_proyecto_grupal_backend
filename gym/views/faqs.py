@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from gym.models.class_faqs import Faqs
-from gym.serializers.class_faq_serializers import FaqsSerializer
+from gym.models.faqs import Faqs
+from gym.serializers.faq import FaqsSerializer
 
 
 class FaqsViewSet(viewsets.ModelViewSet):

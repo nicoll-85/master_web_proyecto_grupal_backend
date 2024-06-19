@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from gym.models.class_faqs import Faqs
+from gym.models.faqs import Faqs
 
 
 class FaqsSerializer(serializers.ModelSerializer):

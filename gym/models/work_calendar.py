@@ -2,11 +2,12 @@ from django.db import models
 
 
 class WorkCalendar(models.Model):
-    id = models.AutoField(primary_key=True)
     date = models.DateField()
+
+    class Meta:
+        ordering = ['date']
+        verbose_name = 'calendar'
+        verbose_name_plural = 'calendars'
 
     def __str__(self):
         return self.date
-
-
-

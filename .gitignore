@@ -24,6 +24,7 @@ media/
 *.pyc
 *.pyo
 *.pyd
+db.sqlite3
 
 # Dependency directories
 venv/
