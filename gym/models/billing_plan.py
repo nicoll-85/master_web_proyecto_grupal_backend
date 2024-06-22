@@ -5,7 +5,7 @@ from gym.models.activity_plan import ActivityPlan
 
 
 class BillingPlan(models.Model):
-    name = models.CharField(max_length=100, unique=True)
+    name = models.CharField(max_length=100)
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
     plan = models.ForeignKey(ActivityPlan, on_delete=models.CASCADE) # Básico, intermedio, avanzado
@@ -15,6 +15,7 @@ class BillingPlan(models.Model):
         ordering = ['name']
         verbose_name = 'billing_plan'
         verbose_name_plural = 'billing_plans'
+        unique_together = ['plan', 'modality']
 
     def __str__(self):
         return self.name

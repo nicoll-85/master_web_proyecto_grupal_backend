@@ -5,5 +5,6 @@ from gym.models.billing_plan import BillingPlan
 
 
 class User(AbstractUser):
-    billing_plan = models.ForeignKey(BillingPlan, on_delete=models.CASCADE, blank = True)
+    phone = models.CharField(max_length = 20, null = True)
+    billing_plan = models.ForeignKey(BillingPlan, on_delete=models.CASCADE, null = True,blank = True)
     pass
