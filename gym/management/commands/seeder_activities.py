@@ -17,17 +17,17 @@ class Command(BaseCommand):
         {'name': 'Class3', 'description': 'Description3', 'modality_id': 1, 'plan_id': 3},
     ]
     DATA_SCHEDULES = [
-        {'class__name': 'Class1', 'user__coach': 'Coach1', 'day_week': 'Monday', 'start_time': '08:00', 'end_time': \
+        {'class__name': 'Class1', 'user__coach': 'JavierC', 'day_week': 'Monday', 'start_time': '08:00', 'end_time': \
             '09:00'},
-        {'class__name': 'Class2', 'user__coach': 'Coach2', 'day_week': 'Tuesday', 'start_time': '09:00',
+        {'class__name': 'Class2', 'user__coach': 'IsabelC', 'day_week': 'Tuesday', 'start_time': '09:00',
          'end_time': '10:00'},
-        {'class__name': 'Class3', 'user__coach': 'Coach3', 'day_week': 'Wednesday', 'start_time': '10:00',
+        {'class__name': 'Class3', 'user__coach': 'LuisC', 'day_week': 'Wednesday', 'start_time': '10:00',
          'end_time': '11:00'},
     ]
     DATA_USERS = [
-        {'class': 'Class1', 'username': ['Client1', 'Client3']},
-        {'class': 'Class2', 'username': ['Client2', 'Client3']},
-        {'class': 'Class3', 'username': ['Client1', ]},
+        {'class': 'Class1', 'username': ['Antonio', 'Laura']},
+        {'class': 'Class2', 'username': ['Maria', 'Juan']},
+        {'class': 'Class3', 'username': ['Laura']},
     ]
 
     def add_arguments(self, parser):

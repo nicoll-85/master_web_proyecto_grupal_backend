@@ -23,16 +23,16 @@ class Command(BaseCommand):
     def __create_billing_plan(self):
         print('Seeder billing - Creating billing plans')
         data_billing_plans = [
-            {'name': 'Panteón', 'plan_id': 1, 'modality_id': 1},
-            {'name': 'Cumbre', 'plan_id': 2, 'modality_id': 1},
-            {'name': 'Olimpo', 'plan_id': 3, 'modality_id': 1},
-            { 'name': 'Panteón', 'plan_id': 1, 'modality_id': 2 },
-            { 'name': 'Cumbre', 'plan_id': 2, 'modality_id': 2},
-            { 'name': 'Olimpo', 'plan_id': 3, 'modality_id': 2 },
+            {'name': 'Panteón', 'plan_id': 1, 'modality_id': 1, 'price': 40},
+            {'name': 'Cumbre', 'plan_id': 2, 'modality_id': 1, 'price': 60},
+            {'name': 'Olimpo', 'plan_id': 3, 'modality_id': 1, 'price': 90},
+            {'name': 'Panteón', 'plan_id': 1, 'modality_id': 2, 'price': 30},
+            {'name': 'Cumbre', 'plan_id': 2, 'modality_id': 2, 'price': 50},
+            {'name': 'Olimpo', 'plan_id': 3, 'modality_id': 2, 'price': 80},
         ]
         for data in data_billing_plans:
             try:
-                plan = BillingPlan.objects.get(plan_id = data['plan_id'], modality_id = data['modality_id'])
+                BillingPlan.objects.get(plan_id = data['plan_id'], modality_id = data['modality_id'])
                 print(f'{data["name"]} already exists')
             except Exception as e:
                 act_plan = ActivityPlan.objects.get(id=data['plan_id'])
@@ -40,7 +40,8 @@ class Command(BaseCommand):
                 BillingPlan.objects.create(
                     name=data['name'],
                     plan=act_plan,
-                    modality=modality
+                    modality=modality,
+                    price=data['price']
                 )
 
         users = User.objects.filter(groups__name='Client')

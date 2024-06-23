@@ -21,15 +21,13 @@ class AuthViewset(viewsets.ViewSet):
 
     @action(detail = False, methods = ['post'], url_path = 'login', permission_classes = [])
     def login(self, request):
-        user = request.user
-        if not(user and user.is_authenticated):
-            user = authenticate(
-                    username = request.data.get('username'),
-                    password = request.data.get('password'),
-                    )
-            if user is None:
-                return Response(data = { 'msg': 'Invalid credentials' }, status = HTTPStatus.UNAUTHORIZED)
-            login(request, user)
+        user = authenticate(
+            username = request.data.get('username'),
+            password = request.data.get('password'),
+            )
+        if user is None:
+            return Response(data = { 'msg': 'Invalid credentials' }, status = HTTPStatus.UNAUTHORIZED)
+        login(request, user)
         if user and user.is_authenticated:
             token, _ = Token.objects.get_or_create(user = user)
             return Response(data = { 'token': token.key }, status = HTTPStatus.OK)
@@ -37,6 +35,9 @@ class AuthViewset(viewsets.ViewSet):
 
     @action(detail = False, methods = ['post'], url_path = 'logout', permission_classes = [IsAuthenticated])
     def logout(self, request):
+        user = request.user
+        if user and user.is_authenticated:
+            Token.objects.filter(user = user).delete()
         logout(request)
         return Response(status = HTTPStatus.ACCEPTED)
 
@@ -64,4 +65,11 @@ class AuthViewset(viewsets.ViewSet):
         return Response(status = HTTPStatus.CREATED)
 
     def __validate_user_data(self, user_data):
-        return True
+        cond = []
+        cond.append(user_data.get('first_name') is not None)
+        cond.append(user_data.get('last_name') is not None)
+        cond.append(user_data.get('username') is not None)
+        cond.append(user_data.get('email') is not None)
+        cond.append(user_data.get('password') is not None)
+        cond.append(user_data.get('phone') is not None)
+        return all(cond)
