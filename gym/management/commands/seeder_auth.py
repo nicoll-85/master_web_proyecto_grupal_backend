@@ -113,7 +113,8 @@ class Command(BaseCommand):
                         first_name= user_data['first_name'],
                         last_name = user_data['last_name'],
                         phone = user_data['phone'],
-                        is_superuser = True
+                        is_superuser = True,
+                        is_staff = True
                         ))
                 list_users[-1].groups.add(admin_role)
             except Exception as e:
