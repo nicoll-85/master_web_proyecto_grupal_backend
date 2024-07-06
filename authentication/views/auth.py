@@ -73,3 +73,13 @@ class AuthViewset(viewsets.ViewSet):
         cond.append(user_data.get('password') is not None)
         cond.append(user_data.get('phone') is not None)
         return all(cond)
+
+    @action(detail = False, methods = ['put'], url_path = 'update_profile', permission_classes = [IsAuthenticated])
+    def update_profile(self, request):
+        user = request.user
+        serializer = UserSerializer(user, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"message": "Profile updated successfully"})
+        return Response(serializer.errors, status=HTTPStatus.BAD_REQUEST)
+    
