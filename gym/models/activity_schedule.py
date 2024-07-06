@@ -10,7 +10,7 @@ class ActivitySchedule(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     activity = models.ForeignKey(Activity, on_delete=models.CASCADE)
-    coach = models.ForeignKey('authentication.User', on_delete=models.CASCADE)
+    coach = models.ForeignKey('authentication.User', on_delete=models.CASCADE, null=True)
 
     class Meta:
         ordering = ['day_week']

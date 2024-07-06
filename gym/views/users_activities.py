@@ -7,3 +7,7 @@ from gym.serializers.users_activities import UsersActivitiesSerializer
 class UsersActivitiesViewSet(viewsets.ModelViewSet):
     queryset = UsersActivities.objects.all()
     serializer_class = UsersActivitiesSerializer
+
+
+    # api/coach/activity-schedule/
+
