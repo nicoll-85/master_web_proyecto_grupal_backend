@@ -7,4 +7,6 @@ from gym.models.billing_plan import BillingPlan
 class User(AbstractUser):
     phone = models.CharField(max_length = 20, null = True)
     billing_plan = models.ForeignKey(BillingPlan, on_delete=models.CASCADE, null = True,blank = True)
-    pass
+
+    def get_billing_periods(self):
+        return self.billingperiod_set.all()

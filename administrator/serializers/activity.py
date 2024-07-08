@@ -5,8 +5,8 @@ from gym.serializers.activity_schedule import ActivityScheduleSerializer
 
 
 class ActivitySerializer(serializers.ModelSerializer):
-    schedule = ActivityScheduleSerializer()
+    schedules = ActivityScheduleSerializer(read_only = True, many = True)
+
     class Meta:
         model = Activity
         fields = '__all__'
-        read_only_fields = ['created_at', 'updated_at']
