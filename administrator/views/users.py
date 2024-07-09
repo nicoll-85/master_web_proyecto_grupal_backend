@@ -19,9 +19,3 @@ class UsersViewSet(viewsets.ViewSet):
         users = User.objects.filter(groups=groups)
         serializer = UserSerializer(users, many=True)
         return Response(data = serializer.data, status = HTTPStatus.OK)
-
-    # TODO: DEVOLVER LA DATA DE UN USUARIO. api/admin/users/<pk>
-    @action(detail = False, methods = ['get'], url_path = '(?P<pk>[1-9]+)')
-    def get_user(self, request, pk):
-        return Response(data = { 'msg': 'Not implemented yet "get_user"' }, status = HTTPStatus.NOT_IMPLEMENTED)
-

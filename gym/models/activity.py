@@ -17,5 +17,9 @@ class Activity(models.Model):
         verbose_name = 'activity'
         verbose_name_plural = 'activities'
 
+    @property
+    def schedules(self):
+        return self.activityschedule_set.all()
+
     def __str__(self):
         return self.name
