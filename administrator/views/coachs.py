@@ -18,8 +18,8 @@ class CoachViewSet(viewsets.ViewSet):
     serializer_class = UserSerializer
     permission_classes = [IsAuthenticated, IsAdminUser]
 
-    @action(detail = False, methods = ['post'], url_path = '/')
-    def create(self, request, *args, **kwargs):
+    @action(detail = False, methods = ['post'], url_path = '')
+    def create_coach(self, request, *args, **kwargs):
         if not self.__validate_user_data(request.data):
             return Response(data = { 'msg': 'Invalid user data' }, status = HTTPStatus.BAD_REQUEST)
         try:
@@ -49,8 +49,8 @@ class CoachViewSet(viewsets.ViewSet):
         cond.append(user_data.get('title') is not None)
         return all(cond)
 
-    @action(detail = True, methods = ['get'], url_path = '(?P<pk>[0-9]+)')
-    def get_employee(self, request, pk):
+    @action(detail = False, methods = ['get'], url_path = '(?P<pk>[0-9]+)')
+    def get_coach(self, request, pk):
         try:
             queryset = self.queryset.get(pk = pk)
             serializer = UserSerializer(queryset)

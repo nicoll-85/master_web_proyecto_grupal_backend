@@ -91,6 +91,14 @@ class ClientsViewSet(viewsets.ViewSet):
         except User.DoesNotExist:
             return Response(status = HTTPStatus.NOT_FOUND)
 
+    @action(detail = False, methods = ['get'], url_path = 'filter')
+    def filter_modality(self, request):
+        try:
+            users = self.queryset.filter(billing_plan__modality__name = request.data['modality'])
+            return Response(data = UserSerializer(users, many = True).data, status = HTTPStatus.OK)
+        except User.DoesNotExist:
+            return Response(status = HTTPStatus.NOT_FOUND)
+
     @action(detail = True, methods = ['delete'], url_path = 'deactivate')
     def deactivate(self, request, pk):
         try:
