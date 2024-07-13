@@ -1,5 +1,4 @@
 from django.db import models
-
 from gym.models.activity import Activity
 
 
