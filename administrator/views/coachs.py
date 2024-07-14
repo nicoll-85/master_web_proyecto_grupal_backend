@@ -68,33 +68,6 @@ class CoachViewSet(viewsets.ViewSet):
         except User.DoesNotExist:
             return Response(status = HTTPStatus.NOT_FOUND)
 
-    @action(detail = True, methods = ['post'], url_path = 'add-activity-schedule')
-    def add_activity_schedule(self, request, pk):
-        try:
-            coach = self.queryset.get(pk = pk)
-            activity_schedule = ActivitySchedule.objects.create(
-                activity = request.data['activity'],
-                day = request.data['day'],
-                start_time = request.data['start_time'],
-                end_time = request.data['end_time'],
-                coach = coach
-            )
-            return Response(ActivityScheduleSerializer(activity_schedule).data, status = HTTPStatus.CREATED)
-        except User.DoesNotExist:
-            return Response(status = HTTPStatus.NOT_FOUND)
-
-    @action(detail = True, methods = ['put'], url_path = 'delete-activity-schedule/(?P<pk_activity_schedule>[0-9]+)')
-    def delete_activity_schedule(self, request, pk, pk_activity_schedule):
-        try:
-            coach = self.queryset.get(pk = pk)
-            ActivitySchedule.objects.get(
-                pk = pk_activity_schedule,
-                coach = coach
-            ).delete()
-            return Response(status = HTTPStatus.OK)
-        except User.DoesNotExist:
-            return Response(status = HTTPStatus.NOT_FOUND)
-
     @action(detail = True, methods = ['delete'], url_path = 'deactivate')
     def deactivate(self, request, pk):
         try:
