@@ -16,7 +16,7 @@ from gym.serializers.billing_period import BillingPeriodSerializer
 from gym.serializers.billing_plan import BillingPlanSerializer
 
 
-class ClientsViewSet(viewsets.ViewSet):
+class ClientsAdminViewSet(viewsets.ViewSet):
     queryset = User.objects.filter(groups__name = 'Client').select_related('billing_plan')
     serializer_class = UserSerializer
     permission_classes = [IsAuthenticated, IsAdminUser]

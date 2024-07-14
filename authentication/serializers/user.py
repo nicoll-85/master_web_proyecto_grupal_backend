@@ -13,10 +13,11 @@ class UserSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class ClientSerializer(serializers.ModelSerializer):
+class UserBasicSerializer(serializers.ModelSerializer):
     billing_plan = BillingPlanSerializer(read_only = True)
 
     class Meta:
         model = User
-        fields = '__all__'
+        fields = ['id', 'username', 'first_name', 'last_name', 'email', 'phone',
+                  'date_joined', 'title', 'description', 'billing_plan', 'groups']
 

@@ -9,7 +9,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from authentication.models import User
-from authentication.serializers.user import UserSerializer
+from authentication.serializers.user import UserBasicSerializer, UserSerializer
 from gym.models.billing_plan import BillingPlan
 
 
@@ -17,7 +17,7 @@ class AuthViewset(viewsets.ViewSet):
 
     @action(detail = False, methods = ['get'], url_path = 'me', permission_classes = [IsAuthenticated])
     def me(self, request):
-        return Response(UserSerializer(request.user).data)
+        return Response(UserBasicSerializer(request.user).data)
 
     @action(detail = False, methods = ['post'], url_path = 'login', permission_classes = [])
     def login(self, request):

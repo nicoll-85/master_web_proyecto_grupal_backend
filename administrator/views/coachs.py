@@ -13,7 +13,7 @@ from gym.models.activity_schedule import ActivitySchedule
 from gym.serializers.activity_schedule import ActivityScheduleSerializer
 
 
-class CoachViewSet(viewsets.ViewSet):
+class CoachAdminViewSet(viewsets.ViewSet):
     queryset = User.objects.filter(groups__name = 'Coach')
     serializer_class = UserSerializer
     permission_classes = [IsAuthenticated, IsAdminUser]
