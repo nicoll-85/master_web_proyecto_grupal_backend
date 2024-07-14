@@ -16,7 +16,7 @@ from gym.serializers.billing_period import BillingPeriodSerializer
 from gym.serializers.billing_plan import BillingPlanSerializer
 
 
-class ClientsViewSet(viewsets.ViewSet):
+class ClientsAdminViewSet(viewsets.ViewSet):
     queryset = User.objects.filter(groups__name = 'Client').select_related('billing_plan')
     serializer_class = UserSerializer
     permission_classes = [IsAuthenticated, IsAdminUser]
@@ -88,6 +88,14 @@ class ClientsViewSet(viewsets.ViewSet):
             user = self.queryset.get(pk = pk)
             billing_periods = user.get_billing_periods()
             return Response(data = BillingPeriodSerializer(billing_periods, many = True).data, status = HTTPStatus.OK)
+        except User.DoesNotExist:
+            return Response(status = HTTPStatus.NOT_FOUND)
+
+    @action(detail = False, methods = ['get'], url_path = 'filter')
+    def filter_modality(self, request):
+        try:
+            users = self.queryset.filter(billing_plan__modality__name = request.data['modality'])
+            return Response(data = UserSerializer(users, many = True).data, status = HTTPStatus.OK)
         except User.DoesNotExist:
             return Response(status = HTTPStatus.NOT_FOUND)
 

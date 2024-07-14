@@ -10,7 +10,7 @@ from authentication.models import User
 from authentication.serializers.user import UserSerializer
 
 
-class UsersViewSet(viewsets.ViewSet):
+class UsersAdminViewSet(viewsets.ViewSet):
     permission_classes = [IsAuthenticated, IsAdminUser]
 
     @action(detail = False, methods = ['get'], url_path = '(?P<role>[Client|Coach]+)')

@@ -6,7 +6,7 @@ from gym.models.activity_plan import ActivityPlan
 
 class Activity(models.Model):
     name = models.CharField(max_length=100, unique=True)
-    description = models.TextField()
+    description = models.TextField(null = True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     plan = models.ForeignKey(ActivityPlan, on_delete=models.CASCADE)
