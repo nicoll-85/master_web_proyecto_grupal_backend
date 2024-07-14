@@ -18,7 +18,7 @@ class CoachAdminViewSet(viewsets.ViewSet):
     serializer_class = UserSerializer
     permission_classes = [IsAuthenticated, IsAdminUser]
 
-    @action(detail = False, methods = ['post'], url_path = '')
+    @action(detail = False, methods = ['post'], url_path = 'create')
     def create_coach(self, request, *args, **kwargs):
         if not self.__validate_user_data(request.data):
             return Response(data = { 'msg': 'Invalid user data' }, status = HTTPStatus.BAD_REQUEST)
