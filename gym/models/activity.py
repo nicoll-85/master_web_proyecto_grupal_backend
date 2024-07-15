@@ -21,5 +21,9 @@ class Activity(models.Model):
     def schedules(self):
         return self.activityschedule_set.all()
 
+    @property
+    def my_clients(self):
+        return self.usersactivities_set.all()
+
     def __str__(self):
         return self.name
