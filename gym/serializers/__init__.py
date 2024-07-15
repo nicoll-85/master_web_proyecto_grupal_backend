@@ -1,0 +1,5 @@
+from .class_plan_serializer import ClassPlanSerializer
+from .class_modality_serializer import ClassModalitySerializer
+from .classes_serializer import ClassesSerializer
+from .class_schedule_serializer import ClassScheduleSerializer
+from .users_classes_serializer import UsersClassesSerializer

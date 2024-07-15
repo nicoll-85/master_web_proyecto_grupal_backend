@@ -24,7 +24,8 @@ from gym.urls import router as router_gym
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path(f"{settings.BASE_URL}auth/", include(router_auth)),
-    path(f"{settings.BASE_URL}admin/", include(router_admin)),
-    path(f"{settings.BASE_URL}gym/", include(router_gym)),
+    #path(f"{settings.BASE_URL}auth/", include(router_auth)),
+    #path(f"{settings.BASE_URL}admin/", include(router_admin)),
+    #path(f"{settings.BASE_URL}gym/", include(router_gym)),
+    path('api/', include('gym.urls')),
     ]
