@@ -18,14 +18,13 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
 
-from administrator.urls import router as router_admin
-from authentication.urls import router as router_auth
-from gym.urls import router as router_gym
+from administrator.urls import router as admin_router
+from authentication.urls import router as auth_router
+from gym.urls import router as gym_router
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    #path(f"{settings.BASE_URL}auth/", include(router_auth)),
-    #path(f"{settings.BASE_URL}admin/", include(router_admin)),
-    #path(f"{settings.BASE_URL}gym/", include(router_gym)),
-    path('api/', include('gym.urls')),
+    path('api/admin/', include(admin_router.urls)),
+    path('api/auth/', include(auth_router.urls)),
+    path('api/gym/', include(gym_router.urls)),
     ]
