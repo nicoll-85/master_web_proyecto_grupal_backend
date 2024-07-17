@@ -82,4 +82,12 @@ class AuthViewset(viewsets.ViewSet):
             serializer.save()
             return Response({"message": "Profile updated successfully"})
         return Response(serializer.errors, status=HTTPStatus.BAD_REQUEST)
+   
+    @action(detail = False, methods = ['delete'], url_path = 'unsubscribe', permission_classes = [IsAuthenticated])
+    def unsubscribe(self, request):
+        user = request.user
+
+        user.is_active = False
+        user.save()
+        return Response({"message": "User unsubscribe successfully"}) 
     

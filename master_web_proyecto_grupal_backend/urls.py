@@ -27,4 +27,5 @@ urlpatterns = [
     path('api/admin/', include(admin_router.urls)),
     path('api/auth/', include(auth_router.urls)),
     path('api/gym/', include(gym_router.urls)),
+    path('api/', include('gym.urls')),
     ]

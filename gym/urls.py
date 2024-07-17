@@ -8,10 +8,12 @@ from gym.views.billing_period import BillingPeriodViewSet
 from gym.views.billing_plan import BillingPlanViewSet
 from gym.views.faqs import FaqsViewSet
 from gym.views.work_calendar import WorkCalendarViewSet
+from gym.views.activities import ActivitiesViewSet
+from administrator.views.activities import ActivitiesAdminViewSet
 
 
 router = routers.DefaultRouter()
-router.register(r'activity', ActivityViewSet)
+router.register(r'admin-activities', ActivitiesAdminViewSet, basename='admin-activity')
 router.register(r'activity_plan', ActivityPlanViewSet)
 router.register(r'activity_schedule', ActivityScheduleViewSet)
 router.register(r'activity_modality', ActivityModalityViewSet)
@@ -19,6 +21,8 @@ router.register(r'billing_period', BillingPeriodViewSet)
 router.register(r'billing_plan', BillingPlanViewSet)
 router.register(r'faqs', FaqsViewSet)
 router.register(r'work_calendar', WorkCalendarViewSet)
+router.register(r'activities', ActivitiesViewSet, basename='activity')
+
 
 urlpatterns = [
     path('', include(router.urls)),

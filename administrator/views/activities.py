@@ -1,5 +1,4 @@
 from http import HTTPStatus
-
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
@@ -8,7 +7,6 @@ from rest_framework.response import Response
 from administrator.serializers.activity import ActivitySerializer
 from authentication.models import User
 from gym.models.activity import Activity
-
 
 class ActivitiesAdminViewSet(viewsets.ModelViewSet):
     queryset = Activity.objects.all()
