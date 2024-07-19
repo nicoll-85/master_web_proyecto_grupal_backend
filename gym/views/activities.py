@@ -6,25 +6,21 @@ from rest_framework.response import Response
 from gym.models.activity import Activity
 from administrator.serializers.activity import ActivitySerializer
 
+
 class ActivitiesViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Activity.objects.all()
     serializer_class = ActivitySerializer
     permission_classes = [IsAuthenticated]
 
-    @action(detail=True, methods=['post'], url_path='register_classes')
+    @action(detail=False, methods=['post'], url_path='register_activities')
     def register_classes(self, request, pk=None):
-        try:
-            activity = self.queryset.get(pk=pk)
-            user = request.user
-
-            if activity.users.filter(pk=user.pk).exists():
-                return Response({'message': 'Te has registrado en la clase'}, status=HTTPStatus.BAD_REQUEST)
-
-            activity.users.add(user)
-            return Response({'message': 'Registro realizado correctamente'}, status=HTTPStatus.OK)
-
-        except Activity.DoesNotExist:
-            return Response(status=HTTPStatus.NOT_FOUND)
+        user = request.user
+        activity_ids = request.data.get('activities', [])
+        activities = self.queryset.filter(pk__in=activity_ids)
+        for activity in activities:
+            if not user.get_signed_activities().filter(activity=activity).exists():
+                user.usersactivities_set.create(activity=activity)
+        return Response(status=HTTPStatus.CREATED)
 
     def list(self, request):
         user = request.user

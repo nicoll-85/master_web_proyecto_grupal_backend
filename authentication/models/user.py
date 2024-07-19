@@ -12,3 +12,5 @@ class User(AbstractUser):
 
     def get_billing_periods(self):
         return self.billingperiod_set.all()
+    def get_signed_activities(self):
+        return self.usersactivities_set.select_related('activity').all()

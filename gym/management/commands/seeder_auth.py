@@ -20,11 +20,14 @@ class Command(BaseCommand):
 
     COACH_DATA = [
         { 'username': 'JavierC', "first_name": 'Javier', "last_name": 'Mendoza', 'phone': '678451534',
-          'email': 'javier.coach@coach.com', 'password': 'coach123' },
+          'email': 'javier.coach@coach.com', 'password': 'coach123', 'title': 'Personal Trainer', 'description':
+              'Soy un personal trainer con mas de 5 años de experiencia' },
         { 'username': 'IsabelC', "first_name": 'Isabel', "last_name": 'Ortiz', 'phone': '674839201',
-          'email': 'isabel.coach@coach.com', 'password': 'coach456' },
+          'email': 'isabel.coach@coach.com', 'password': 'coach456', 'title': 'Entrenadora de Crossfit', 'description':
+              'Soy una entrenadora de crossfit con mas de 3 años de experiencia' },
         { 'username': 'LuisC', "first_name": 'Luis', "last_name": 'Morales', 'phone': '689204173',
-          'email': 'luis.coach@coach.com', 'password': 'coach789' },
+          'email': 'luis.coach@coach.com', 'password': 'coach789', 'title': 'Entrenador de Boxeo',
+          'description': 'Soy un entrenador de boxeo con mas de 2 años de experiencia' },
         ]
 
     ADMIN_DATA = [
@@ -98,7 +101,9 @@ class Command(BaseCommand):
                         last_name = user_data['last_name'],
                         phone = user_data['phone'],
                         password = user_data['password'],
-                        is_staff = True
+                        is_staff = True,
+                        title = user_data['title'],
+                        description = user_data['description']
                         ))
                 list_users[-1].groups.add(coach_role)
             except Exception as e:
